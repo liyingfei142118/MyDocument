@@ -1,0 +1,28 @@
+etcd是一个高可用的键值存储系统，主要用于共享配置和服务发现，通过Raft一致性算法处理日志复制以保证强一致性。Raft是一个新的一致性算法，适用于分布式系统的日志复制，Raft通过选举的方式来实现一致性。
+Raft将一致性拆分为几个关键元素：Leader选举、日志复制、安全性。
+节点有三种角色：
+    Leader：负责接收客户端的请求，将日志复制到其他节点并告知其他节点何时应用这些日志是安全的
+    Candidate：用于选举Leader的一种角色
+    Follower：负责响应来自Leader或者Candidate的请求
+角色转换：
+    所有节点初始状态都是Follower角色；
+    超时时间内没有收到Leader的请求则转换为Candidate进行选举；
+    Candidate收到大多数节点的选票则转换为Leader；发现Leader或者收到更高任期的请求则转换为Follower；
+    Leader在收到更高任期的请求后转换为Follower；
+
+linux查看日志文件内容命令有
+
+cat 由第一行开始显示文件内容
+tac 从最后一行开始显示，可以看出 tac 是 cat 的倒着写
+nl 显示的时候，顺道输出行号！
+more 一页一页的显示文件内容
+less 与 more 类似，但是比 more 更好的是，他可以往前翻页！
+head 只看头几行
+tail 只看尾巴几行
+
+ifconfig是linux中用于显示或配置网络设备（网络接口卡）的命令
+uptime显示开机时间
+top显示当前系统资源使用情况，相当于任务管理器
+netstat命令用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。
+
+nice为行 即将运 的进 程设置niceness值（优先级），而renice用于改变正在运行的进程的niceness值 （优先级）
